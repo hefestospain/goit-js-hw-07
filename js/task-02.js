@@ -12,11 +12,14 @@ const ingredients = [
   //Для создания DOM-узлов используй document.createElement().
 
   const listIngredients = document.querySelector("#ingredients");
+  console.log(listIngredients)
 
-  for (const ingr of ingredients) {
-    //console.log(ingr);
-    let li = document.createElement("li");
-    li.textContent = ingr;
-
-    listIngredients.appendChild(li);
-  }
+  const makeListPro = (ingredients) => {
+    return ingredients.map(ingr => {
+      const listElem = document.createElement('li');
+      listElem.textContent = ingr;
+      return listElem;
+    })
+  }  
+  const listProducts = makeListPro(ingredients);
+  listIngredients.append(...listProducts)
