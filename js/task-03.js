@@ -20,10 +20,20 @@ const images = [
 //Добавь минимальное оформление галереи флексбоксами или гридами через css-классы.
 
 const gallery = document.querySelector("#gallery");
-for (const image of images) {
-  gallery.insertAdjacentHTML('afterbegin',
-                          `<li>
-                            <img src =${image.url}
-                              alt =${image.alt}>
-                          </li>`);
-}
+
+const makeGalleryElem = images.map(
+  elem => {
+    const addGalleryImg = `<li><img src=${elem.url} alt=$´${elem.alt}></li>`;
+    return addGalleryImg; 
+  }
+)
+
+gallery.insertAdjacentHTML("beforeend",makeGalleryElem);
+
+// for (const image of images) {
+//   gallery.insertAdjacentHTML('afterbegin',
+//                           `<li>
+//                             <img src =${image.url}
+//                               alt =${image.alt}>
+//                           </li>`);
+// }
